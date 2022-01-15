@@ -43,25 +43,32 @@ public class GenericsTest1 {
 		System.out.println("NUMBERS: " + nums);
 	}
 	
+	
 	private static <T> void copy(List<? super T> dest, List<? extends T> src) {
         int srcSize = src.size();
 //        if (srcSize > dest.size())
 //            throw new IndexOutOfBoundsException("Source does not fit in dest");
-
+        System.out.println();
         if (srcSize < COPY_THRESHOLD ||
             (src instanceof RandomAccess && dest instanceof RandomAccess)) {
             for (int i=0; i<srcSize; i++)
 //                dest.set(i, src.get(i));
             	dest.add(src.get(i));
+//            	dest.add(10L); // NOT OK;
+//            	dest.add(10); // NOT OK;
+//            	dest.add((Integer)(new Integer(10))); // NOT OK;
+//            	dest.add(10); // NOT OK;
         } else {
             ListIterator<? super T> di=dest.listIterator();
             ListIterator<? extends T> si=src.listIterator();
             for (int i=0; i<srcSize; i++) {
                 di.next();
 //                di.set(si.next());
+//                dest.add(10);
                 di.add(si.next());
             }
         }
+        
     }
 
 }
