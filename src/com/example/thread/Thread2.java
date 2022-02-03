@@ -5,7 +5,7 @@ class Thread2 implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Thread.sleep(20L * 1000L);
+			Thread.sleep(50L * 1000L);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
