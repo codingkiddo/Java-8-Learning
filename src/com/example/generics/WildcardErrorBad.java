@@ -9,15 +9,24 @@ import java.util.stream.Collectors;
 public class WildcardErrorBad {
 
 	public static void main(String[] args) {
-		List<? super Number> ints = new ArrayList<>(Arrays.asList(1, 2, 3));
+//		List<? super Number> ints = new ArrayList<>(Arrays.asList(1, 2, 3));
 //		foo(ints);
 		
-		Integer[] intArray = {1, 2, 3, 4, 5};
-	    List<String> stringList = fromArrayToList(intArray, Object::toString);
-	    System.out.println(stringList);
-
+//		Integer[] intArray = {1, 2, 3, 4, 5};
+//	    List<String> stringList = fromArrayToList(intArray, Object::toString);
+//	    System.out.println(stringList);
+	    
+	    List<?> list = Arrays.asList(1, "1", true, 'Z');
+	    printvalues(list);
 	}
 	
+	private static void printvalues(List<?> list) {
+		
+		for(Object o : list) {
+			System.out.println(o.getClass().getSimpleName());
+		}
+		
+	}
 	
 	private static <T, G> List<G> fromArrayToList(T[] a, Function<T, G> mapperFunction) {
 		
