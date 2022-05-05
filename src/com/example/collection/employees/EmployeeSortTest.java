@@ -3,6 +3,7 @@ package com.example.collection.employees;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class EmployeeSortTest {
 
@@ -15,6 +16,13 @@ public class EmployeeSortTest {
 //		Collections.sort(employees, Comparator.comparing(Employee::getfName).thenComparing(Employee::getSalary));
 		System.out.println("After: ");
 		employees.forEach(System.out::println);
+		
+		
+//		Comparing and sorting
+		
+		Comparator<Employee> fNameCompare = Comparator.comparing(Employee::getfName);
+		System.out.println(employees.stream().sorted(fNameCompare).collect(Collectors.toList()));
+		System.out.println(employees.stream().sorted(Comparator.comparing(Employee::getfName).thenComparing(Employee::getSalary)).collect(Collectors.toList()));
 
 	}
 

@@ -1,5 +1,7 @@
 package com.example.collection.streams;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -34,6 +36,17 @@ public class CountEmployeesGroupByCity {
 					Collectors.groupingBy(Employee::getCity, Collectors.summingDouble(Employee::getSalary))
 				);
 		System.out.println("Total Salary By City: " + totalSalaryByCity);
+		
+//		Comparing and sorting
+		
+		Comparator<Employee> fNameCompare = Comparator.comparing(Employee::getfName);
+		System.out.println(employees.stream().sorted(fNameCompare).collect(Collectors.toList()));
+		
+		
+		System.out.println(employees.stream()
+				.filter(e -> e.getCity().equals("BAN"))
+				.map( e -> e.getlName())
+				.collect(Collectors.toList()));
 	}
 
 }
