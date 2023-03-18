@@ -1,0 +1,4 @@
+At this point, you’ve seen how Solr can index data and have done some basic queries. You can choose now to continue to the next example which will introduce more Solr concepts, such as faceting results and managing your schema, or you can strike out on your own.
+If you decide not to continue with this tutorial, the data we’ve indexed so far is likely of little value to you. You can delete your installation and start over, or you can use the bin/solr script we started out with to delete this collection:
+This exercise will walk you through how to start Solr as a two-node cluster (both nodes on the same machine) and create a collection during startup. Then you will index some sample data that ships with Solr and do some basic searches.
+Notice that two instances of Solr have started on two nodes. Because we are starting in SolrCloud mode, and did not define any details about an external ZooKeeper cluster, Solr launches its own ZooKeeper and connects both nodes to it.

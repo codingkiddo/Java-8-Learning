@@ -22,12 +22,12 @@ public class CountDistinctWords {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 
 		BufferedReader bufferedReader = Files.newBufferedReader(
-				Paths.get("/Users/vinodkumar/Documents/Technologies/Java/Java-8-Learning/src/main/resources/data.txt"));
+				Paths.get("data/notes.txt"));
 		Stream<String> lines = bufferedReader.lines();
 		lines.forEach(System.out::println);
 
 		BufferedReader reader = new BufferedReader(new FileReader(
-				new File("/Users/vinodkumar/Documents/Technologies/Java/Java-8-Learning/src/main/resources/data.txt")));
+				new File("data/notes.txt")));
 		Map<String, Integer> wordsMap = new HashMap<>();
 		String line = reader.readLine();
 		while (line != null) {
@@ -44,10 +44,19 @@ public class CountDistinctWords {
 		System.out.println(wordsMap);
 		reader.close();
 
-
+		System.out.println("===================");
+		
+		System.out.println(Files
+		.lines(Paths.get(
+				"data/notes.txt")).map(s -> s.split(" "))
+		.flatMap(Arrays::stream).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())));
+		
+		System.out.println("===================");
+		
+		
 		Map<String,Long> collect  = Files
 		.lines(Paths.get(
-				"/Users/vinodkumar/Documents/Technologies/Java/Java-8-Learning/src/main/resources/data.txt")).map(s -> s.split(" "))
+				"data/notes.txt")).map(s -> s.split(" "))
 		.flatMap(Arrays::stream).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
 		collect.put(null, 100L);
 		System.out.println(collect);
@@ -57,7 +66,7 @@ public class CountDistinctWords {
 		
 		System.out.println(Files
 				.lines(Paths.get(
-						"/Users/vinodkumar/Documents/Technologies/Java/Java-8-Learning/src/main/resources/data.txt"))
+						"data/notes.txt"))
 				.map(s -> s.split(" ")).flatMap(Arrays::stream).count());
 
 		List<Integer> list = Arrays.asList(3, 2, 12, 5, 6, 11, 13);
